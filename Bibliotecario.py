@@ -87,17 +87,19 @@ if user_query := st.chat_input("¿Qué estás buscando?"):
         "miembros del equipo no técnicos a encontrar la información. Responde de manera amable "
         "en el mismo idioma en que te pregunten (inglés o español). Basándote estrictamente en el "
         "siguiente contexto extraído de Notion, indica el nombre de la página, lo que contiene y "
-        f"proporciona su enlace o URL exacta para que puedan acceder:\n\n{notion_context}"
+        f"proporciona su enlace o URL exacta para que puedan acceder:\n\n{notion_context}"        
     )
     
     try:
+        # Cambiamos "gemini-1.5-flash" por su versión explícita estable
         model = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
+            model_name="models/gemini-1.5-flash-latest",
             system_instruction=system_instruction
         )
         
         response = model.generate_content(user_query)
         bot_response = response.text
+        
     except Exception as e:
         bot_response = f"Lo siento, tuve un problema al procesar la consulta con Inteligencia Artificial. Detalles: {e}"
 
