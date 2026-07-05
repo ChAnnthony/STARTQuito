@@ -8,8 +8,9 @@ st.title("📚 El Bibliotecario de START Quito")
 st.write("Pregúntame en inglés o español dónde encontrar documentos o información en Notion.")
 
 # 2. Inicializar credenciales seguras (Se configuran en la nube de Streamlit)
-NOTION_TOKEN = st.secrets["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"]
-GEMINI_API_KEY = st.secrets["AQ.Ab8RN6J3Bi_i32vBWUFHXA1f0t9VuwBRX8qj9IzbgCyzFYAKEA"]
+# 2. Inicializar credenciales seguras (Usa estos nombres exactos de texto)
+NOTION_TOKEN = st.secrets["NOTION_TOKEN"]
+GEMINI_API_KEY = st.secrets["GEMINI_API_KEY"]
 
 genai.configure(api_key=GEMINI_API_KEY)
 notion = Client(auth=NOTION_TOKEN)
